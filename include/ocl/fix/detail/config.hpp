@@ -1,0 +1,12 @@
+/*
+ * File: detail/config.hpp
+ * Purpose: Config file of the OCL.FIX library.
+ * Author: Amlal El Mahrouss (amlal@nekernel.org)
+ * Copyright 2025, Amlal El Mahrouss, licensed under the Boost Software License.
+ */
+
+#pragma once
+
+#include <ocl/detail/config.hpp>
+#include <ocl/crc_hash.hpp>
+#include <ocl/print.hpp>
