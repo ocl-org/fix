@@ -5,8 +5,11 @@
  * Copyright 2025, Amlal El Mahrouss, licensed under the Boost Software License.
  */
 
-#pragma once
+#ifndef __OCL_FIX_CONFIG
+#define __OCL_FIX_CHECKSUM
 
 #include <ocl/detail/config.hpp>
 #include <ocl/crc_hash.hpp>
 #include <ocl/print.hpp>
+
+#endif

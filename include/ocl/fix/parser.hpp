@@ -5,8 +5,8 @@
  * Copyright 2025, Amlal El Mahrouss, licensed under the Boost Software License.
  */
 
-#ifndef _OCL_FIX_PARSER_HPP
-#define _OCL_FIX_PARSER_HPP
+#ifndef __OCL_FIX_PARSER
+#define __OCL_FIX_PARSER
 
 #include <ocl/fix/detail/config.hpp>
 #include <string>
@@ -160,4 +160,4 @@ namespace ocl::fix
 	};
 } // namespace ocl::fix
 
-#endif // ifndef _OCL_FIX_PARSER_HPP
+#endif // ifndef __OCL_FIX_PARSER
