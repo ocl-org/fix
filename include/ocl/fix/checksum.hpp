@@ -5,10 +5,13 @@
  * Copyright 2025, Amlal El Mahrouss, licensed under the Boost Software License.
  */
 
-#pragma once
+#ifndef __OCL_FIX_CHECKSUM
+#define __OCL_FIX_CHECKSUM
 
 #include <ocl/fix/detail/config.hpp>
 
 namespace ocl::fix
 {
 }
+
+#endif 
