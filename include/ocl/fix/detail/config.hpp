@@ -6,7 +6,7 @@
  */
 
 #ifndef __OCL_FIX_CONFIG
-#define __OCL_FIX_CHECKSUM
+#define __OCL_FIX_CONFIG
 
 #include <ocl/detail/config.hpp>
 #include <ocl/crc_hash.hpp>
