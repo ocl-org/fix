@@ -87,7 +87,8 @@ namespace ocl::fix
 
 		bool is_valid()
 		{
-			return this->operator[]("8").empty() == false;
+            constexpr auto magic_tag = "8";
+			return this->operator[](magic_tag).empty() == false;
 		}
 
 		explicit operator bool()
@@ -103,20 +104,20 @@ namespace ocl::fix
 		/// AMLALE: Yeah...
 		static constexpr const int	soh	 = '\x01';
 		static constexpr const char eq	 = '=';
-		static constexpr uint32_t	base = 10U;
+		static constexpr unsigned	base = 10U;
 
 		explicit visitor() = default;
 		~visitor()		   = default;
 
-		visitor& operator=(const visitor&) = default;
-		visitor(const visitor&)			   = default;
+		visitor& operator=(const visitor&) = delete;
+		visitor(const visitor&)			   = delete;
 
 		range_buffer operator()(const std::string& in)
 		{
 			return this->visit(in);
 		}
 
-		/// @brief Visit a FIX message and parse it into a range_buffer object.
+		/// @brief Visits a FIX message and parse it into a range_buffer object.
 		/// @param in The input FIX message as a string.
 		/// @warning This function may throw exceptions.
 		range_buffer visit(const std::string& in)
