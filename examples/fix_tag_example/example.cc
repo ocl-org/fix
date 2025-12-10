@@ -1,6 +1,6 @@
 #include <ocl/fix/parser.hpp>
 
-constexpr const char default_fix[] = {
+constexpr char default_fix[] = {
 	'8', '=', 'F', 'I', 'X', '.', '4', '.', '2', 0x01,
 	'9', '=', '6', '3', 0x01, // BodyLength = 63
 	'3', '5', '=', 'A', 0x01,

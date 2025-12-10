@@ -19,6 +19,7 @@ namespace ocl::fix
 
 	/// @brief Buffer+Length structure
 	using range_ptr_type = range*;
+    using range_type = range;
 
 	using tag_type	 = std::string;
 	using value_type = std::string;
@@ -87,7 +88,7 @@ namespace ocl::fix
 
 		bool is_valid()
 		{
-            constexpr auto magic_tag = "8";
+			constexpr auto magic_tag = "8";
 			return this->operator[](magic_tag).empty() == false;
 		}
 
@@ -101,10 +102,9 @@ namespace ocl::fix
 	class visitor final
 	{
 	public:
-		/// AMLALE: Yeah...
-		static constexpr const int	soh	 = '\x01';
-		static constexpr const char eq	 = '=';
-		static constexpr unsigned	base = 10U;
+		static constexpr int	  soh  = '\x01';
+		static constexpr char	  eq   = '=';
+		static constexpr unsigned base = 10U;
 
 		explicit visitor() = default;
 		~visitor()		   = default;
