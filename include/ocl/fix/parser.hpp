@@ -19,7 +19,7 @@ namespace ocl::fix
 
 	/// @brief Buffer+Length structure
 	using range_ptr_type = range*;
-    using range_type = range;
+	using range_type	 = range;
 
 	using tag_type	 = std::string;
 	using value_type = std::string;
@@ -74,6 +74,7 @@ namespace ocl::fix
 		range_buffer& operator=(const range_buffer&) = default;
 		range_buffer(const range_buffer&)			 = default;
 
+		[[nodiscard("please use the returned value of the tag.")]]
 		value_type operator[](const tag_type& key)
 		{
 			if (key.empty())
