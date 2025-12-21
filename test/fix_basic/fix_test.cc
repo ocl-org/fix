@@ -8,6 +8,7 @@
 #include <ocl/fix/parser.hpp>
 #include <gtest/gtest.h>
 
+/// \brief The template to do our tests on.
 constexpr char default_fix[] = {
 	'8', '=', 'F', 'I', 'X', '.', '4', '.', '2', 0x01,
 	'9', '=', '6', '3', 0x01, // BodyLength = 63
@@ -21,18 +22,23 @@ constexpr char default_fix[] = {
 	'1', '0', '=', '1', '4', '3', 0x01, 0x00 // CheckSum = 143
 };
 
-ocl::fix::basic_visitor	   basic_visitor;
-ocl::fix::basic_range_data fix = basic_visitor.visit(default_fix);
+ocl::fix::visitor	   basic_visitor;
+ocl::fix::range_buffer fix = basic_visitor.visit(default_fix);
 
-TEST(FIXTest, FIX1)
+TEST(FIXTest, FIXGoodPacket)
 {
 	EXPECT_TRUE(fix.is_valid());
-	EXPECT_TRUE(fix["35"].empty() == false && fix["35"] == "A");
-	EXPECT_TRUE(fix["49"].empty() == false && fix["49"] == "SERVER");
 }
 
-TEST(FIXTest, FIX2)
+TEST(FIXTest, FIXGoodParse)
 {
-	EXPECT_TRUE(fix["133"].empty() == true && fix["133"] != "");
+	EXPECT_TRUE(fix["35"].empty() == false && fix["35"] == "A");
+	EXPECT_TRUE(fix["49"].empty() == false && fix["49"] == "SERVER");
+
 	EXPECT_TRUE(fix["49"].empty() == false && fix["49"] != "A");
+}
+
+TEST(FIXTest, FIXGoodErrorOnParse)
+{
+	EXPECT_TRUE(fix["133"].empty() == true && fix["133"] == "");
 }
