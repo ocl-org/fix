@@ -13,7 +13,7 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
-add_executable(FIXTestBasic fix_test.cc)
+add_executable(FIXTestBasic fix.test.cpp)
 target_link_libraries(FIXTestBasic gtest_main)
 
 set_property(TARGET FIXTestBasic PROPERTY CXX_STANDARD 20)
