@@ -101,7 +101,8 @@ namespace ocl::fix
         std::unique_ptr<impl> impl_;
 
 	public:
-		visitor() = default;
+		visitor();
+        ~visitor();
 
         /// \brief Alias of visit.
 		range_buffer operator()(const std::string& in);
@@ -111,10 +112,6 @@ namespace ocl::fix
 		/// @warning This function may throw exceptions.
 		range_buffer visit(const std::string& in);
 	};
-
-#if !defined(OCL_FIX_HAS_IMPL)
-struct visitor::impl {};
-#endif
 
 } // namespace ocl::fix
 
