@@ -104,12 +104,12 @@ namespace ocl::fix
 		visitor() = default;
 
         /// \brief Alias of visit.
-		range_buffer operator()(const boost::string_view& in);
+		range_buffer operator()(const std::string& in);
 
 		/// @brief Visits a FIX message and parse it into a range_buffer object.
 		/// @param in The input FIX message as a string.
 		/// @warning This function may throw exceptions.
-		range_buffer visit(const boost::string_view& in);
+		range_buffer visit(const std::string& in);
 	};
 
 #if !defined(OCL_FIX_HAS_IMPL)
