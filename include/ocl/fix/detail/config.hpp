@@ -13,4 +13,3 @@
 #include <ocl/print.hpp>
 
 #endif
-
