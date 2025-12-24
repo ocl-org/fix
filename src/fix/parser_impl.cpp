@@ -78,7 +78,7 @@ namespace ocl::fix
 		}
 	};
 
-	visitor::visitor() = default;
+	visitor::visitor()	= default;
 	visitor::~visitor() = default;
 
 	/// \brief Alias of visit.

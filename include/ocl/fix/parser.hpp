@@ -26,7 +26,6 @@ namespace ocl::fix
 	using tag_type	 = std::string;
 	using value_type = std::string;
 
-
 	struct range final
 	{
 		char*  bytes_{nullptr};
@@ -97,14 +96,18 @@ namespace ocl::fix
 	/// @brief visitor object which returns a fix::range_buffer instance.
 	class visitor final
 	{
-        struct impl;
-        std::unique_ptr<impl> impl_;
+		struct impl;
+		std::unique_ptr<impl> impl_;
+
+#ifndef OCL_FIX_HAS_IMPL
+		struct impl {};
+#endif
 
 	public:
 		visitor();
-        ~visitor();
+		~visitor();
 
-        /// \brief Alias of visit.
+		/// \brief Alias of visit.
 		range_buffer operator()(const std::string& in);
 
 		/// @brief Visits a FIX message and parse it into a range_buffer object.
