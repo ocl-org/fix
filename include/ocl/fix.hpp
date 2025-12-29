@@ -14,13 +14,13 @@
 
 namespace ocl::fix
 {
-    
-    template <typename It, class Pred>
+
+	template <typename It, class Pred>
 	It find(It begin, It end, Pred callable);
 
 	template <typename It, class Callable>
 	It find_if(It begin, It end, Callable callable);
 
-}
+} // namespace ocl::fix
 
 #endif

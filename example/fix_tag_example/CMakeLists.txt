@@ -1,4 +1,4 @@
-
+# AMLALE: Hm?
 cmake_minimum_required(VERSION 3.15...3.31)
 
 project(
@@ -6,10 +6,10 @@ project(
   VERSION 1.0
   LANGUAGES CXX)
 
-find_package(Boost REQUIRED COMPONENTS container)
+find_package(Boost REQUIRED)
 
-add_executable(FixExample example.cc)
+add_executable(FixExample example.cpp)
 
 set_property(TARGET FixExample PROPERTY CXX_STANDARD 20)
 target_include_directories(FixExample PUBLIC ../../include/ocl)
-target_link_libraries(FixExample PRIVATE Boost::container)
+target_link_libraries(FixExample PRIVATE Boost)

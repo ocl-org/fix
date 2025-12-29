@@ -22,8 +22,8 @@ constexpr char default_fix[] = {
 	'1', '0', '=', '1', '4', '3', 0x01, 0x00 // CheckSum = 143
 };
 
-ocl::fix::visitor	   basic_visitor;
-ocl::fix::range_buffer fix = basic_visitor.visit(default_fix);
+static ocl::fix::visitor		 basic_visitor;
+static ocl::fix::range_buffer fix = basic_visitor.visit(default_fix);
 
 TEST(FIXTest, FIXGoodPacket)
 {

@@ -100,7 +100,9 @@ namespace ocl::fix
 		std::unique_ptr<impl> impl_;
 
 #ifndef OCL_FIX_HAS_IMPL
-		struct impl {};
+		struct impl
+		{
+		};
 #endif
 
 	public:
