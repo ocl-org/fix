@@ -16,10 +16,10 @@ namespace ocl::fix
 {
 
 	template <typename It, class Pred>
-	It find(It begin, It end, Pred callable);
+	Pred find(It begin, It end, Pred callable);
 
-	template <typename It, class Callable>
-	It find_if(It begin, It end, Callable callable);
+	template <typename It, class Pred>
+	Pred find_if(It begin, It end, Pred callable);
 
 } // namespace ocl::fix
 
