@@ -1,7 +1,7 @@
 #include <ocl/fix/parser.hpp>
 #include <ocl/fix/checksum.hpp>
 
-constexpr char default_fix[] = {
+constexpr char const default_fix[] = {
 	'8', '=', 'F', 'I', 'X', '.', '4', '.', '2', 0x01,
 	'9', '=', '8', '7', 0x01, // BodyLength = 87
 	'3', '5', '=', 'A', 0x01,
@@ -42,8 +42,7 @@ int main(int argc, char** argv)
 	ocl::io::print(":value=", fix["49"], "\n");
 
 	ocl::io::print(":checksum=", ocl::fix::try_index_checksum(fix), "\n");
-	ocl::io::print(":checksum=", ocl::fix::operators::fix::checksum(default_fix_unchecked, 
-				sizeof(default_fix_unchecked)) + 1, "\n");
+	ocl::io::print(":checksum=", ocl::fix::operators::checksum(default_fix_unchecked), "\n");
 
 	return 0;
 }

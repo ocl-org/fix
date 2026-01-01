@@ -27,7 +27,7 @@ namespace ocl::fix
 	}
 
 	/// \brief FIX message operators namespace.
-	namespace operators::fix
+	namespace operators
 	{
 		using checksum_type = long long;
 
@@ -35,23 +35,21 @@ namespace ocl::fix
 		/// \param in_ Pointer to the message buffer.
 		/// \param len Length of the message in bytes.
 		/// \return The checksum value (sum of all bytes modulo 256).
-		inline constexpr checksum_type
-			checksum(const char* in_,
-				 const std::size_t  len)
+		constexpr inline checksum_type
+		checksum(const std::string_view& in_) noexcept
 		{
-			if (len < 1)
-				return 0L;
-
 			checksum_type cks{};
 
-			for (std::size_t idx{}; idx < len; ++idx)
-			{
-				cks += static_cast<uint8_t>(in_[idx]);
-			}
+			for (std::size_t idx{};
+			     idx < in_.size(); ++idx)
+		          cks += static_cast<uint8_t>(in_[idx]);
+		        
 
+			// add \0
+			cks += 1;
 			return cks % 256;
 		}
-	} // namespace operators::fix
+	} // namespace operators
 
 } // namespace ocl::fix
 
