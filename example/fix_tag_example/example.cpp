@@ -1,4 +1,5 @@
 #include <ocl/fix/parser.hpp>
+#include <ocl/fix/checksum.hpp>
 
 constexpr char default_fix[] = {
 	'8', '=', 'F', 'I', 'X', '.', '4', '.', '2', 0x01,
@@ -15,7 +16,7 @@ constexpr char default_fix[] = {
 
 int main(int argc, char** argv)
 {
-	ocl::fix::visitor basic_visitor;
+	ocl::fix::visitor	   basic_visitor;
 	ocl::fix::range_buffer fix = basic_visitor.visit(default_fix);
 
 	ocl::io::enable_stdio_sync(false);
@@ -25,6 +26,8 @@ int main(int argc, char** argv)
 
 	ocl::io::print(":key=49\n");
 	ocl::io::print(":value=", fix["49"], "\n");
+
+	ocl::io::print("checksum=", ocl::fix::try_index_checksum(fix), "\n");
 
 	return 0;
 }
