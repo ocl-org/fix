@@ -35,18 +35,18 @@ namespace ocl::fix
 		/// \param in_ Pointer to the message buffer.
 		/// \param len Length of the message in bytes.
 		/// \return The checksum value (sum of all bytes modulo 256).
-		inline checksum_type
+		inline constexpr checksum_type
 			checksum(const char* in_,
-				 const long  len)
+				 const std::size_t  len)
 		{
 			if (len < 1)
 				return 0L;
 
-			long long cks{};
+			checksum_type cks{};
 
-			for (long idx{}; idx < len; ++idx)
+			for (std::size_t idx{}; idx < len; ++idx)
 			{
-				cks += static_cast<unsigned char>(in_[idx]);
+				cks += static_cast<uint8_t>(in_[idx]);
 			}
 
 			return cks % 256;
