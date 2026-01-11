@@ -7,6 +7,7 @@ find_package(Boost REQUIRED)
 
 add_library(ocl_fix src/fix/parser_impl.cpp)
 target_link_libraries(ocl_fix boost_core)
+target_include_directories(ocl_fix PUBLIC ${BOOST_INCLUDE_DIRS})
 
 install(DIRECTORY include/ DESTINATION include)
 install(TARGETS ocl_fix DESTINATION lib)

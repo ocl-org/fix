@@ -13,10 +13,13 @@ namespace ocl::fix
 
 	namespace detail
 	{
-		inline const char* begin_fix() noexcept
+
+		inline boost::string_view& begin_fix() noexcept
 		{
-			return "FIX.4.2";
+			static boost::string_view begin_fix{"FIX.4.2"};
+			return begin_fix;
 		}
+
 	} // namespace detail
 
 	struct visitor::impl final

@@ -18,12 +18,17 @@ namespace ocl::fix
 	/// \brief Returns the checksum index of a FIX message.
 	/// \param range the range_buffer containing the message.
 	/// \throws runtime_error if the FIX message is invalid (missing tag "8").
+
 	inline std::string try_index_checksum(range_buffer& fix)
 	{
 		if (fix.is_valid())
 			return fix["10"];
 		else
-			detail::throw_runtime_error();
+			::ocl::fix::detail::throw_runtime_error();
+
+		::ocl::fix::detail::unreachable();
+
+		return {};
 	}
 
 	/// \brief FIX message operators namespace.
@@ -41,9 +46,8 @@ namespace ocl::fix
 			checksum_type cks{};
 
 			for (std::size_t idx{};
-			     idx < in_.size(); ++idx)
-		          cks += static_cast<uint8_t>(in_[idx]);
-		        
+				 idx < in_.size(); ++idx)
+				cks += static_cast<uint8_t>(in_[idx]);
 
 			// add \0
 			cks += 1;

@@ -5,10 +5,16 @@
  * Copyright 2025, Amlal El Mahrouss, licensed under the Boost Software License.
  */
 
+// Copyright 2025-2026, Amlal El Mahrouss (amlal@nekernel.org)
+// Distributed under the Boost Software License, Version 1.0. (See accompanying
+// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+// Official repository: https://github.com/ocl-org/fix
+
 #ifndef __OCL_FIX_PARSER
 #define __OCL_FIX_PARSER
 
 #include <ocl/fix/detail/config.hpp>
+#include <fstream>
 #include <string>
 #include <memory>
 
@@ -52,6 +58,14 @@ namespace ocl::fix
 		return std::string(range.bytes_, range.length_);
 	}
 
+	inline std::string to_string(const range& range) noexcept
+	{
+		if (range.length_ < 1)
+			return std::string{};
+
+		return std::string(range.bytes_, range.length_);
+	}
+
 	/// @brief a range object containing the FIX packet values.
 	class range_buffer final
 	{
@@ -60,7 +74,7 @@ namespace ocl::fix
 		std::string					magic_{};
 		string_hash_map<value_type> message_{};
 
-		static inline const char* begin;
+		static boost::string_view& begin;
 
 		explicit range_buffer() = default;
 		~range_buffer()			= default;
@@ -119,5 +133,17 @@ namespace ocl::fix
 	};
 
 } // namespace ocl::fix
+
+inline std::ostream& operator<<(std::ostream& os, ocl::fix::range& r)
+{
+	os << ocl::fix::to_string(r);
+	return os;
+}
+
+inline std::ostream& operator<<(std::ostream& os, const ocl::fix::range& r)
+{
+	os << ocl::fix::to_string(r);
+	return os;
+}
 
 #endif // ifndef __OCL_FIX_PARSER

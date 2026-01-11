@@ -12,4 +12,25 @@
 #include <ocl/crc_hash.hpp>
 #include <ocl/print.hpp>
 
+namespace ocl::fix::detail
+{
+
+	inline void throw_runtime_error(const boost::source_location& location = BOOST_CURRENT_LOCATION)
+	{
+		throw std::runtime_error(location.to_string());
+	}
+
+	inline void unreachable() noexcept
+	{
+#if defined(__GNUC__) || defined(__clang__)
+		__builtin_unreachable();
+#elif defined(_MSC_VER)
+		__assume(false);
+#else
+		std::abort();
+#endif
+	}
+
+} // namespace ocl::fix::detail
+
 #endif
